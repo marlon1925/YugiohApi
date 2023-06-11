@@ -1,9 +1,34 @@
 
+  .custom-titless {
+        font-family: 'Arial', sans-serif;
+        font-size: 24px;
+        color: #b1c53e;
+        text-align: center;
+        margin-bottom: 20px;
+        /* Estilo de letra personalizado */
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        /* Estilo de animación */
+        position: relative;
+        display: inline-block;
+        animation: underlineAnimation 0.5s ease-in-out infinite;
+    }
 
-
-
-
-
+    @keyframes underlineAnimation {
+        0% {
+            transform: scaleX(1);
+            border-bottom: 2px solid #ecea82;
+        }
+        50% {
+            transform: scaleX(1.2);
+            border-bottom: 2px solid  #ecea82;
+        }
+        100% {
+            transform: scaleX(1);
+            border-bottom: 2px solid  #ecea82;
+        }
+    }
 
     .custom-titles {
         font-family: 'Arial', sans-serif;
