@@ -1,46 +1,31 @@
-// const express = require('express')
+const express = require('express');
+const path = require('path');
+const { engine } = require('express-handlebars');
 
-// const app = express()
+const app = express();
 
-// module.exports = app
+// Configuraciones
+app.set('port', process.env.port || 3000);
+app.set('views', path.join(__dirname, 'views'));
 
-const express = require('express')
+app.engine('.hbs', engine({
+  defaultLayout: 'main',
+  layoutsDir: path.join(app.get('views'), 'layouts'),
+  partialsDir: path.join(app.get('views'), 'partials'),
+  extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
 
-const path = require('path')
-const { engine }  = require('express-handlebars')
+// Middleware
+app.use(express.json());
 
+// Rutas
+app.get('/', (req, res) => {
+  res.render('index');
+});
+app.use(require('./routers/index.routes'));
 
-//Inicializamos 
-const app = express()
+// Archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
 
-//configuraciones
-app.set('port', process.env.port || 3000)
-app.set('views', path.join(__dirname,'views'))
-
-app.engine('.hbs',engine({
-    defaultLayout:'main',
-    layoutsDir: path.join(app.get('views'),'layouts'),
-    partialsDir: path.join(app.get('views'),'partials'),
-    extname:'.hbs'
-}))
-app.set('view engine','.hbs')
-
-// Rutas 
-app.get('/',(req,res)=>{
-    res.render('index')
-})
-app.use(require('./routers/index.routes'))
-
-
-//Middleware
-
-app.use(express.urlencoded({extend:false}))
-
-//Variables globales
-
-
-//Archivos stataticos
-
-app.use(express.static(path.join(__dirname,'public')))
-
-module.exports = app
+module.exports = app;
