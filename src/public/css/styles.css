@@ -71,3 +71,26 @@
 .bd-mode-toggle {
     z-index: 1500;
 }
+.zoom-img {
+    width: 180px; /* Ancho deseado */
+    height: 250px; /* Alto deseado */
+    overflow: hidden;
+  }
+  
+  .zoom-img > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform .5s ease-in-out; /* Transición suave */
+  }
+  
+  .zoom-img:hover > img {
+    transform: scale(1.2); /* Zoom del 120% en el hover */
+  }
+  .centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  

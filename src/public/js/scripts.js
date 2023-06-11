@@ -18,6 +18,8 @@ const consultarCarta = async (id, number) => {
   const pintarCarta = (data, id) => {
     let item = lista.querySelector(`#card-${id}`);
     item.querySelector("img").setAttribute("src", data.card_images[0].image_url);
-    item.querySelector("p").textContent = data.name;
+    item.querySelector("h3").textContent = data.name;
+    item.querySelector("p").textContent = data.desc;
+
   };
   
