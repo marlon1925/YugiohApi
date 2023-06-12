@@ -65,7 +65,6 @@
     "destroy": "^1.2.0",
     "dir-glob": "^3.0.1",
     "dot-prop": "^6.0.1",
-    "dotenv": "^16.1.4",
     "eastasianwidth": "^0.2.0",
     "ee-first": "^1.1.1",
     "emoji-regex": "^9.2.2",
@@ -196,13 +195,11 @@
     "negotiator": "^0.6.3",
     "neo-async": "^2.6.2",
     "node-gyp": "^9.3.1",
-    "nodemon": "^2.0.22",
     "nopt": "^6.0.0",
     "normalize-package-data": "^5.0.0",
     "normalize-path": "^3.0.0",
     "normalize-url": "^8.0.0",
     "npm-bundled": "^3.0.0",
-    "npm-check-updates": "^16.10.12",
     "npm-install-checks": "^6.1.1",
     "npm-normalize-package-bin": "^3.0.1",
     "npm-package-arg": "^10.1.0",
@@ -343,9 +340,15 @@
     "yocto-queue": "^0.1.0"
   },
   "scripts": {
-    "start":"node src/index.js"
+    "start":"node src/index.js",
+    "dev":"nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.1.4",
+    "nodemon": "^2.0.22",
+    "npm-check-updates": "^16.10.12"
+  }
 }
