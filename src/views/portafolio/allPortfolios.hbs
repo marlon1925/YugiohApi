@@ -1,0 +1,60 @@
+<!-- Portfolio Section-->
+<section class="page-section mt-5" id="login">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">ALL CARDS</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <!-- Section Portfolios -->
+        <div class="row justify-content-center">
+            <section class=" portfolio" id="portfolio">
+                <div class="container">
+                    <div class="text-end mb-3">
+                        <a href="/portafolio/add" class="text-decoration-none">
+                            <button class="btn btn-success btn-xl" type="submit">Create new card</button>
+                        </a>
+                    </div>
+                    <div class="row justify-content-center">
+                        {{#each portfolios}}
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <div class="card h-100">
+                                <div class="col-md-6">
+                                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+                                        id="card-2">
+                                        <div class="col p-4 d-flex flex-column position-static custom-cardss">
+                                            <h3 class="mb-0"
+                                                style="text-align: center; color: rgb(181,84,41); animation: scaleAnimation 0.3s;">
+                                                {{title}}</h3>
+                                            <p class="card-text mb-auto " style="margin-top: 10px;"></p>
+                                        </div>
+                                        <div class="zoom-img custom-imagess">
+                                            <img class="card-img-top" width="200" height="250" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <button class="btn btn-primary btn-sm">More infromation</button>
+                                    <a href="/portafolio/edit/{{_id}}">
+                                        <button class="btn btn-warning btn-sm">Update</button>
+                                    </a>
+                                    <form action="/portafolio/delete/{{_id}}?_method=DELETE" method="POST"
+                                        class="d-inline">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+<script src="/js/scripts.js"></script>
