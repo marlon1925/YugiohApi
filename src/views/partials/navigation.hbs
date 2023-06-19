@@ -1,21 +1,46 @@
-    <header class="border-bottom lh-1 py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 pt-1">
+<header class="border-bottom lh-1 py-3" style="background-color: #bae5d0;">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1"></div>
+        <div class="col-4 text-center">
+            <div class="title-wrapper">
+                <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#" style="color: #0edb8d; font-size: 24px; font-weight: bold; text-decoration: none; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); background-image: linear-gradient(to right, #0edb8d, #1bb97d); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">YU-GI-OH</a>
             </div>
-            <div class="col-4 text-center">
-                <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">YU-GI-OH</a>
-            </div>
-            <style>
-                .btn-spacing {
-                    margin-right: 10px;
-                    /* Ajusta el valor según tus necesidades */
-                }
-            </style>
-
-            <div class="col-4 d-flex justify-content-end align-items-center">
-                <a class="btn btn-sm btn-outline-secondary btn-spacing" href="/user/login">Log in</a>
-                <a class="btn btn-sm btn-outline-secondary btn-spacing" href="/user/register">Sign up</a>
-            </div>
-
         </div>
-    </header>
+        <style>
+            .btn-spacing {
+                margin-right: 10px;
+                /* Ajusta el valor según tus necesidades */
+            }
+            .title-wrapper {
+                display: inline-block;
+                position: relative;
+                padding: 10px;
+            }
+            .title-wrapper::before,
+            .title-wrapper::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                width: 40px;
+                height: 4px;
+                background-color: #0edb8d;
+                transform: translateY(-50%);
+            }
+            .title-wrapper::before {
+                left: -30px;
+                background-image: linear-gradient(to right, transparent, #0edb8d);
+            }
+            .title-wrapper::after {
+                right: -30px;
+                background-image: linear-gradient(to left, transparent, #0edb8d);
+            }
+        </style>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <div class="btn-wrapper">
+                <a class="btn btn-sm btn-outline-secondary btn-spacing" href="/user/login" style="color: #265532; background-color: rgb(116,241,173); border-color: rgb(116,241,173);">Log in</a>
+                <a class="btn btn-sm btn-outline-secondary btn-spacing" href="/user/register" style="color: #265532; background-color: rgb(116,241,173); border-color: rgb(116,241,173);">Sign up</a>
+            </div>
+        </div>
+    </div>
+</header>
+
