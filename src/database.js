@@ -1,21 +1,17 @@
 //Importacion de Mongoose
-const mongoose = require('mongoose')
-const MONGODB_URI = 'mongodb://0.0.0.0:27017/YuGiOh'
+const mongoose = require("mongoose");
+const MONGODB_URI = 'mongodb+srv://admin:admin@cluster0.vu6o189.mongodb.net/?retryWrites=true&w=majority'
 
-connection = async()=>{
-
+connection = async ()=>{
     try{
-         
         await mongoose.connect(MONGODB_URI,{
-            //Advertncias de funciones 
             useUnifiedTopology:true,
             useNewUrlParser:true
         })
-        console.log('Database is connected')
-    }catch (error){
-          console.log(error)
+        console.log("Database is connected")
+    }catch (error) {
+        console.log(error)
     }
 }
 
-module.exports=connection
-
+module.exports = connection
