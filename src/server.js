@@ -47,6 +47,12 @@ app.use(require('./routers/portafolio.routes'))
 app.use(require('./routers/user.routes'))
 
 
+// Variables globales
+app.use((req,res,next)=>{
+  res.locals.user = req.user?.name || null
+  next()
+})
+
 // Archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 

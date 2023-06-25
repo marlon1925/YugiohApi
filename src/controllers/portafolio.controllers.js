@@ -1,7 +1,7 @@
 const Portfolio = require("../models/Portfolio");
 
 const renderAllPortafolios = async (req, res) => {
-  const portfolios = await Portfolio.find().lean();
+  const portfolios = await Portfolio.find({ user: req.user._id }).lean();
   res.render("portafolio/allPortfolios", { portfolios });
 };
 
@@ -29,29 +29,19 @@ const consultarCartaName = async (name) => {
     return { title, desc, img };
   } catch (error) {
     console.log(error);
-     // Muestra la alerta con el mensaje de error
+    // Muestra la alerta con el mensaje de error
     throw error; // Vuelve a lanzar el error para que sea capturado por la función de llamada
   }
 };
 
 const createNewPortafolio = async (req, res) => {
   const { title } = req.body;
-  console.log(title);
-
-  try {
-    const cartaData = await consultarCartaName(title);
-
-    // Se obtienen los valores retornados por la función consultarCartaName
-    const newPortfolio = new Portfolio(cartaData);
-    newPortfolio.user = req.user._id;
-    await newPortfolio.save();
-
-    res.redirect("/portafolios");
-  } catch (error) {
-    console.log(error);
-    // Manejo del error en caso de que ocurra durante la consulta o el guardado
-    res.status(500).json({ error: "Ocurrió un error al crear el portafolio" });
-  }
+  const cartaData = await consultarCartaName(title);
+  // Se obtienen los valores retornados por la función consultarCartaName
+  const newPortfolio = new Portfolio(cartaData);
+  newPortfolio.user = req.user._id;
+  await newPortfolio.save();
+  res.redirect("/portafolios");
 };
 
 const renderEditPortafolioForm = async (req, res) => {
@@ -64,11 +54,9 @@ const updatePortafolio = async (req, res) => {
   const portfolio = await Portfolio.findById(req.params.id).lean();
   if (portfolio.user.toString() !== req.user._id.toString())
     return res.redirect("/portafolios");
-  const { title } = req.body;
+  const { title, category, description } = req.body;
   await Portfolio.findByIdAndUpdate(req.params.id, {
-    title,
-    category,
-    description,
+    title
   });
   res.redirect("/portafolios");
 };
