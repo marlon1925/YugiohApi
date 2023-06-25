@@ -3,6 +3,8 @@ const passport = require('passport')
 //Importamos el moddelo user
 const User = require('../models/User')
 
+/* This code is configuring a local authentication strategy for Passport.js, a popular authentication
+middleware for Node.js. */
 const LocalStrategy = require('passport-local').Strategy
 passport.use(new LocalStrategy({
     usernameField:'email',
