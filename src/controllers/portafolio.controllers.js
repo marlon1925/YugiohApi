@@ -16,6 +16,7 @@ const renderPortafolioForm = (req,res)=>{
 const createNewPortafolio =async (req,res)=>{
     const {title, category,description} = req.body
     const newPortfolio = new Portfolio({title,category,description})
+    newPortfolio.user = req.user._id
     await newPortfolio.save()
     res.redirect('/portafolios')
 }
