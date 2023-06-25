@@ -24,5 +24,4 @@ router.put('/portafolio/edit/:id', isAuthenticated,updatePortafolio)
 
 router.delete('/portafolio/delete/:id', isAuthenticated,deletePortafolio)
 
-
 module.exports = router
