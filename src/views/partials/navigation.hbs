@@ -1,74 +1,36 @@
-<header class="border-bottom lh-1 py-3" style="background-color: #bae5d0;">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-        <div class="col-4 pt-1"></div>
-        <div class="col-4 text-center">
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+        {{#if user}}
+        <a class="navbar-brand" href="/portafolios">Bienvenido {{user}}</a>
 
+        {{else}}
+        <a class="navbar-brand" href="/">YU-GI-OH</a>
+
+        {{/if}}
+        <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                {{#if user}}
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                        href="/portafolios">Cards</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                        href="/portafolio/perfile">{{user}}</a></li>
+                <form action="/user/logout" method="POST" class="d-inline">
+                    <button class="btn btn-danger btn-sm mt-2">Logout</button>
+                </form>
+                {{else}}
+                <li class="nav-item mx-0 mx-lg-1 btn btn-sm btn-outline-secondary btn-spacing" style="color: #265532;
+                        background-color: rgb(9, 233, 110); border-color: rgb(116,241,173);"><a
+                        class="nav-link py-3 px-0 px-lg-3 rounded" href="/user/login">Login</a></li>
+                <li class="nav-item mx-0 mx-lg-1" ><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                        href="/user/register">Register</a></li>
+                {{/if}}
+            </ul>
         </div>
-        <style>
-            .btn-spacing {
-                margin-right: 10px;
-                /* Ajusta el valor según tus necesidades */
-            }
-
-            .title-wrapper {
-                display: inline-block;
-                position: relative;
-                padding: 10px;
-            }
-
-            .title-wrapper::before,
-            .title-wrapper::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                width: 40px;
-                height: 4px;
-                background-color: #0edb8d;
-                transform: translateY(-50%);
-            }
-
-            .title-wrapper::before {
-                left: -30px;
-                background-image: linear-gradient(to right, transparent, #0edb8d);
-            }
-
-            .title-wrapper::after {
-                right: -30px;
-                background-image: linear-gradient(to left, transparent, #0edb8d);
-            }
-        </style>
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <div class="title-wrapper">
-                    <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#"
-                        style="color: #0edb8d; font-size: 24px; font-weight: bold; text-decoration: none; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); background-image: linear-gradient(to right, #0edb8d, #1bb97d); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">YU-GI-OH</a>
-                </div>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        {{#if user}}
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="/portafolios">Portfolio</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                                href="#">{{user}}</a></li>
-                        <form action="/user/logout" method="POST" class="d-inline">
-                            <button class="btn btn-danger btn-sm mt-2">Logout</button>
-                        </form>
-                        {{else}}
-                        <a class="btn btn-sm btn-outline-secondary btn-spacing" href="/user/login" style="color: #265532;
-                        background-color: rgb(116,241,173); border-color: rgb(116,241,173);">Log in</a>
-                        <a class="btn btn-sm btn-outline-secondary btn-spacing" href="/user/register"
-                            style="color: #265532; background-color: rgb(116,241,173); border-color: rgb(116,241,173);">Sign
-                            up</a>
-                        {{/if}}
-                    </ul>
-                </div>
-            </div>
-        </nav>
     </div>
-</header>
+</nav>
