@@ -1,4 +1,5 @@
 const Portfolio = require("../models/Portfolio");
+const axios = require('axios');
 
 const renderAllPortafolios = async (req, res) => {
   const portfolios = await Portfolio.find({ user: req.user._id }).lean();
@@ -11,16 +12,15 @@ const renderPortafolio = (req, res) => {
 const renderPortafolioForm = (req, res) => {
   res.render("portafolio/newFormPortafolio");
 };
+
 const consultarCartaName = async (name) => {
   console.log("=======", name);
   try {
-    const response = await fetch(
-      `https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${name}`
-    );
-    if (!response.ok) {
+    const response = await axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${name}`);
+    if (!response.status === 200) {
       throw new Error("Ocurrió un error al realizar la petición");
     }
-    const data = await response.json();
+    const data = response.data;
     const title = data.data[0].name;
     const desc = data.data[0].desc;
     const img = data.data[0].card_images[0].image_url;
@@ -33,6 +33,7 @@ const consultarCartaName = async (name) => {
     throw error; // Vuelve a lanzar el error para que sea capturado por la función de llamada
   }
 };
+
 
 const createNewPortafolio = async (req, res) => {
   const { title } = req.body;
