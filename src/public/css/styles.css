@@ -11308,3 +11308,35 @@ top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
 }
+
+/*Estilos Yugioh*/
+.navbar-brand {
+  font-family: "Geneva", sans-serif;
+  font-size: 16px;
+  font-weight:var(--bs-alert-border-color);
+  text-decoration:underline;
+  
+}
+/*Menu de Navegacion*/
+.navbar.bg-primary-custom {
+  background-color: #007bff; /* Azul primario */
+}
+
+.navbar.bg-primary-custom-2 {
+  background-color: #dc3545; /* Rojo primario */
+}
+
+.navbar.bg-primary-custom-3 {
+  background-color: #a7c686; /* Verde primario */
+}
+
+.navbar.bg-primary-custom-4 {
+  background-color: #ffc107; /* Amarillo primario */
+}
+
+
+
+
+
+
+
