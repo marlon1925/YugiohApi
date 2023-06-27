@@ -3,6 +3,7 @@ const Portfolio = require('../models/Portafolio')
 const fs = require('fs-extra')
 const { uploadImage,deleteImage } = require('../config/clodinary')
 const axios = require("axios");
+const User = require('../models/User')
 
 
 
@@ -96,5 +97,6 @@ module.exports ={
     renderEditPortafolioForm,
     updatePortafolio,
     deletePortafolio,
-    renderPerfileForm
+    renderPerfileForm,
+    
 }

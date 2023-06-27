@@ -1,4 +1,4 @@
-const { sendMailToUser } = require("../config/nodemailer")
+const { sendMailToUser, sendPasswordResetEmail } = require("../config/nodemailer")
 
 // importar passport
 const passport = require("passport")
@@ -33,9 +33,54 @@ const registerNewUser = async(req,res)=>{
     const newUser = await new User({name,email,password,confirmpassword})
     // ENCRIPTAR EL PASSWORD
     newUser.password = await newUser.encrypPassword(password)
+    newUser.crearToken()
+    const token = newUser.crearToken()
+    sendMailToUser(email,token)
     newUser.save()
     res.redirect('/user/login')
 }
+
+const confirmEmail = async(req,res)=>{
+    if(!(req.params.token)) return res.send("Lo sentimos, no se puede validar la cuenta")
+    const userBDD = await User.findOne({token:req.params.token})
+    userBDD.token = null
+    userBDD.confirmEmail=true
+    await userBDD.save()
+    res.send('Token confirmado, ya puedes iniciar sesión');
+}
+
+const renderResetPasswordForm =(req,res)=>{
+    res.render('user/restPassword')
+}
+
+const resetPassword = async (req, res) => {
+  try {
+    const { title } = req.body;
+    console.log(title)
+
+    // Find the user by email
+    const user = await User.findOne({ email: title });
+    if (!user) {
+      return res.status(400).send('No account with that email address exists.');
+    }
+
+    // Retrieve the user's password
+    const password = user.response;
+
+    console.log(password)
+
+    // Send the password reset email
+    sendPasswordResetEmail(title, password);
+    console.log("//legaaaaaaaaaaa")
+    
+    res.redirect('/user/login');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('An error occurred while processing your request.');
+  }
+};
+
+
 
 
 
@@ -64,4 +109,7 @@ module.exports={
     renderLoginForm,
     loginUser,
     logoutUser,
+    confirmEmail,
+    renderResetPasswordForm,
+    resetPassword
 }

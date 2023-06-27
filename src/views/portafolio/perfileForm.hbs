@@ -1,19 +1,26 @@
-<!-- Masthead-->
-<form action="/portafolio/perfile" method="post">
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container d-flex align-items-center flex-column">
-            <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
-            <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">{{user}}</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
         </div>
-    </header>
-</form>
+
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+    </div>
+</header>
+<a href="/user/edit/{{_id}}">
+    <button style="color: #265532;
+                  background-color: rgb(9, 233, 110); border-color: rgb(116,241,173); 
+                  padding: 10px 20px; /* Ajusta el tamaño del botón aquí */ 
+                  float: right; /* Coloca el botón a la derecha */">
+        <i class="fa fa-edit"></i> Editar perfil
+    </button>
+</a>
+

@@ -34,3 +34,20 @@ module.exports.sendMailToUser = async(userMail,token)=>{
     // VERIFICAR EN CONSOLA
     console.log("Message sent: %s", info.messageId);
 }
+
+module.exports.sendPasswordResetEmail = async (userMail, password) => {
+    // The email body
+    let info = await transporter.sendMail({
+      // From
+      from: "admin@yugioh.com",
+      // To
+      to: userMail,
+      // Subject
+      subject: "Reset your password",
+      // Email body
+      html: `<p>Please click on the following link to reset your password:</p><a href="http://localhost:3000/reset/${password}">Reset Password</a>`,
+    });
+    // Log the message ID
+    console.log("Message sent: %s", info.messageId);
+  };
+  
