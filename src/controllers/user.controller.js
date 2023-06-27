@@ -81,7 +81,7 @@ const resetPassword = async (req, res) => {
     }
 
     // Retrieve the user's password
-    const password = user.response;
+    const password = user.password;
 
     console.log(password);
 
