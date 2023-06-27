@@ -11,9 +11,7 @@ const { renderAllPortafolios,
         renderEditPortafolioForm,
         updatePortafolio,
         deletePortafolio,
-        renderPerfileForm,
-        renderEditProfileForm,
-        updateProfile
+        renderPerfileForm
     } = require('../controllers/portafoliocontrollers')
 
 // Crear rutas y llamar a mis metodos del controlador
@@ -21,8 +19,7 @@ router.get('/portafolio/add',isAuthenticated,renderPortafolioForm)
 router.post('/portafolio/add', isAuthenticated,createNewPortafolio)
 router.get('/portafolio/perfile', isAuthenticated,renderPerfileForm)
 
-router.get('/profile/edit/:id', isAuthenticated,renderEditProfileForm)
-router.put('/profile/edit/:id', isAuthenticated,updateProfile)
+
 
 
 router.get('/portafolios',isAuthenticated,renderAllPortafolios)
