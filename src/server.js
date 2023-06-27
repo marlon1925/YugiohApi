@@ -54,6 +54,10 @@ app.use((req,res,next)=>{
     res.locals.user = req.user?.name || null
     next()
 })
+app.use((req,res,next)=>{
+    res.locals.imgPer = req.user?.image.secure_url || null
+    next()
+})
 
 // Rutas
 app.use(require('./routers/portafolio.routes'))

@@ -22,6 +22,10 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    image: {
+      public_id: String,
+      secure_url: String,
+    },
   },
   {
     timestamps: true,
@@ -40,8 +44,8 @@ userSchema.methods.matchPassword = async function (password) {
   const response = await bcrypt.compare(password, this.password);
   return response;
 };
-userSchema.methods.crearToken = function(){
-    return token = this.token = Math.random().toString(36).slice(2)
-}
+userSchema.methods.crearToken = function () {
+  return (token = this.token = Math.random().toString(36).slice(2));
+};
 
 module.exports = model("user", userSchema);
