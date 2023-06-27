@@ -102,6 +102,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  
 }
 
 hr {
@@ -11333,10 +11334,44 @@ transform: translate(-50%, -50%);
 .navbar.bg-primary-custom-4 {
   background-color: #ffc107; /* Amarillo primario */
 }
+/*Login Estilos*/
+
+.page-section-heading {
+  color: #333333; /* Cambia el color a tu preferencia */
+  font-family: "Roboto", sans-serif; /* Cambia la fuente a tu preferencia, aquí se utiliza "Roboto" como ejemplo */
+  font-size: 36px; /* Cambia el tamaño de fuente a tu preferencia */
+  font-weight: bold; /* Opcional: Cambia el peso de la fuente a tu preferencia */
+  text-transform: capitalize; /* Opcional: Convierte la primera letra de cada palabra en mayúscula */
+  letter-spacing: 1px; /* Opcional: Ajusta el espaciado entre letras */
+}
+
+.divider-custom {
+  background-color: rgba(64, 149, 127, 0.10);
+  color: white;
+}
 
 
+/*Colores de los botones*/
+.btn-custom-color {
+  background-color: #40957f;
+  color: white;
+}
 
+.btn-custom-color-2 {
+  background-color: #a7c686;
+  color: black;
+}
+.divider-custom-line,
+.divider-custom-icon svg {
+  color: white !important;
+}
 
-
+/*Imagen de Fondo*/
+    .page-section {
+      min-height: 100vh;  
+      background: linear-gradient(rgba(7,12,0.75),rgba(5,7,12,0.75)), url(../assets/img/fond-image.jpg.jpg) no-repeat center
+      center fixed;
+      background-size: cover;
+    }
 
 

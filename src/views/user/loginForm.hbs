@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/src/public/css/styles.css">
 <!-- Login Section-->
 <section class="page-section mt-5" id="login">
     <div class="container">
@@ -6,7 +7,7 @@
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-icon"><i class="fas fa-moon"></i></div>
             <div class="divider-custom-line"></div>
         </div>
         <!-- Register Section Form-->
@@ -25,7 +26,7 @@
                     <div class="form-floating mb-3">
                         <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com"
                             data-sb-validations="required,email" />
-                        <label for="email">Email address</label>
+                        <label for="email" style="color: #40957f;">Email address</label>
                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                     </div>
@@ -33,7 +34,7 @@
                     <div class="form-floating mb-3">
                         <input class="form-control" id="password" type="password" name="password"
                             placeholder="Enter your password..." data-sb-validations="required" />
-                        <label for="password">Password</label>
+                        <label for="password" style="color: #40957f;">Password</label>
                         <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
                     </div>
                     <!-- Submit success message-->
@@ -57,11 +58,11 @@
                         <div class="text-center text-danger mb-3">Error sending message!</div>
                     </div>
                     <!-- Submit Button-->
-                    <button class="btn btn-primary btn-xl d-block w-100" type="submit">Send</button>
+                   <button class="btn btn-custom-color btn-xl d-block w-100" type="submit">Send</button>
                 </form>
                 <div class="text-end mt-3">
                     <a href="/user/register" class="text-decoration-none">
-                        <button class="btn btn-secondary btn-xl d-block w-100 h-10" type="submit">Register</button>
+                        <button class="btn btn-secondary btn-custom-color-2 btn-xl d-block w-100 h-10" type="submit">Register</button>
                     </a>
                 </div>
                 <div class="text-end mt-3">
