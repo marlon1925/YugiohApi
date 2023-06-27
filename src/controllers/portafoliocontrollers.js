@@ -2,6 +2,8 @@
 const Portfolio = require('../models/Portafolio')
 const axios = require("axios");
 const User = require('../models/User')
+const { uploadImage, deleteImage } = require("../config/clodinary");
+const fs = require("fs-extra");
 
 
 
@@ -66,6 +68,11 @@ const renderEditPortafolioForm =async(req,res)=>{
     const portfolio = await Portfolio.findById(req.params.id).lean()
     res.render('portafolio/editPortfolio',{portfolio})
 }
+
+const renderEditProfileForm =async(req,res)=>{
+  const user = await User.findById(req.params.id).lean()
+  res.render('portafolio/editPerfile',{user})
+}
     
 
 
@@ -75,6 +82,42 @@ const updatePortafolio = async (req, res) => {
     await Portfolio.findByIdAndUpdate(req.params.id, cartaData);
     res.redirect("/portafolios");
   };
+
+  const updateProfile = async(req,res)=>{
+    // Cargar la informacion del portafolio
+    // VERIFICAR EL id DEL PORTAFOLIO SEA EL MISMO
+    const user = await User.findById(req.params.id).lean()
+    // SI ES TRUE CONTINUAR CON LA EDICION Y SI ES FALSE ENVIAR A LA RUTA PORTAFOLIOS
+    
+    // if(!(portfolio._id != req.params.id) return res.redirect('/portafolios')
+    if(user._id != req.params.id) return res.redirect('/portafolio/perfile')
+
+    if(req.files?.image) 
+    {
+        // VAMOAS A REALIZAR LA ACTUALIZACION DE LA IMAGEN
+        // VALIDAR QUE VNEGA UNA IMAGEN EN EL FORMULARIO
+        if(!(req.files?.image)) return res.send("Se requiere una imagen")
+        // ELIMINAR LA IMAGEN EN CLOUDINARY
+        await deleteImage(portfolio.image.public_id)
+        // CARGAR LA NUEVA IMAGEN
+        const imageUpload = await uploadImage(req.files.image.tempFilePath)
+        // CONSTRUIR LA DATA PARA ACTUALIZAR EN BDD
+        const data ={
+            image : {
+            public_id:imageUpload.public_id,
+            secure_url:imageUpload.secure_url
+            }
+        }
+        // ELIMINA LA IMAGEN TEMPORAL
+        await fs.unlink(req.files.image.tempFilePath)
+        // Actualiza en BDD findByIdAndUpdate
+        await Portfolio.findByIdAndUpdate(req.params.id,data)
+    }
+    else{
+
+    }
+    res.redirect('/portafolio/perfile')
+}
   
 
 
@@ -96,5 +139,7 @@ module.exports ={
     updatePortafolio,
     deletePortafolio,
     renderPerfileForm,
+    renderEditProfileForm,
+    updateProfile
     
 }
